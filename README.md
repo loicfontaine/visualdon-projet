@@ -1,4 +1,4 @@
-# visualdon-projet
+# Projet VisualDon
 
 
 [**Données utilisées**](https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency)
