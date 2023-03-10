@@ -1,7 +1,7 @@
 # Projet VisualDon
 
 
-[**Données utilisées**](https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency)
+
 
 ### Contexte
 Ces données viennent d'une étude faite en Grande-Bretagne par l'université d'Oxford en 2021.
@@ -13,4 +13,15 @@ Ce sont des données qualitatives (pas encore sur)
 ### But
 Grâce à ce jeu de données, je souhaite démontrer les bonnes habitudes à suivre ou au contraire, éviter afin d'optimiser son sommeil et sa récupération. Je pense effectivement que la caféine, l'alcool ou encore le fait de fumer a un impact négatif sur notre sommeil.
 ### Références
+[**Données utilisées**](https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency)
 Le jeu de données à plus de 3500 téléchargements.
+
+Notebooks Kaggle:
+[Vina Sleep Project, Vina Chareunsap](https://www.kaggle.com/code/vinachareunsap/vina-sleep-project)
+[Sleep Efficiency, Khramov Dmitriy](https://www.kaggle.com/code/khramovdmitriy/sleep-efficiency)
+[🟠Sleep Efficiency Dataset🟠, Melike Dilekci](https://www.kaggle.com/code/melikedilekci/sleep-efficiency-dataset)
+[Sleep Efficiency Dataset - EDA and Scoringt, Ben_Jamin](https://www.kaggle.com/code/hexenmeiser/sleep-efficiency-dataset-eda-and-scoring)
+[REGRESS Sleep Efficiency (XGB), Unmoved.Finance](https://www.kaggle.com/code/unmoved/regress-sleep-efficiency-xgb)
+[Dimensionality Reduction, Equilibriumm](https://www.kaggle.com/code/equilibriumm/dimensionality-reduction)
+[Sleep efficiency prediction with SKLearn, Teo Wai Hong](https://www.kaggle.com/code/teowaihong/sleep-efficiency-prediction-with-sklearn)
+
