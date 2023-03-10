@@ -1,7 +1,7 @@
-# L'impact de votre quotidien sur le sommeil 🌙
+# L'impact de l'hygiène de vie sur le sommeil 🌙
 ## Contexte
 Ces données viennent d'une étude faite en Grande-Bretagne par l'université d'Oxford en 2021.
-Cette étude vise à comprendre l'impact d'éléments du train de vie sur le sommeil comme la caféine, l'alcool ou encore le sport. 
+Cette étude vise à comprendre l'hygiène de vie sur le sommeil comme la caféine, l'alcool ou encore le sport. 
 Les chercheurs ont sélectionné des participants et les ont suivi en collectant des données sur plusieurs mois. J'ai pu obtenir ces données depuis Kaggle.
 ## Description
 Les données sont sous un tableau CSV. Les données telles que le sommeil profond, sommeil léger, le sommeil paradoxal ainsi que le efficacité du sommeil sont en pourcentages. La caféine consommée dans les dernières 24h sont au format de gramme et l'alcool en oz. La fréquence d'entrainement correspond aux entrainement que le patient fait chaque semaines. Le reste des données sont des dates, des chiffres et du texte.
