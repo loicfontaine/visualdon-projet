@@ -12,6 +12,8 @@
     "vite": "^4.1.4"
   },
   "dependencies": {
+    "d3-array": "^3.2.2",
+    "d3-fetch": "^3.0.1",
     "d3-selection": "^3.0.0"
   }
 }
