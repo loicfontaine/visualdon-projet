@@ -20,3 +20,8 @@ Le jeu de données à plus de 3500 téléchargements.
 - [Dimensionality Reduction, Equilibriumm](https://www.kaggle.com/code/equilibriumm/dimensionality-reduction)  
 - [Sleep efficiency prediction with SKLearn, Teo Wai Hong](https://www.kaggle.com/code/teowaihong/sleep-efficiency-prediction-with-sklearn)  
 
+## Wireframe
+[**Version avec commentaires**](https://www.figma.com/file/zhxPdDLBFfeJWVkOXXulzc/Wireframe?node-id=0%3A1&t=XjGk5XskzzbUZ2e7-1)
+  
+  
+![Wireframe du projet ](https://github.com/loicfontaine/visualdon-projet/blob/main/Wireframe.jpg?raw=true)
