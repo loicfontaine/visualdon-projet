@@ -1,9 +1,10 @@
 import { csv } from "d3-fetch";
 import { select } from "d3-selection";
-import { mean, min, max, extent } from "d3-array";
+import { mean, min, max, extent, ascending } from "d3-array";
 import { axisBottom, axisLeft } from "d3-axis";
-import { scaleLinear } from "d3-scale";
+import { scaleLinear, scaleOrdinal } from "d3-scale";
 import { line } from "d3-shape";
+import { schemeSet2 } from "d3-scale-chromatic";
 
 const grapheUn = document.querySelector("#graphe-1");
 const grapheDeux = document.querySelector("#graphe-2");
@@ -114,7 +115,42 @@ csv("/data/Sleep_Efficiency.csv")
       alcoolAxeMin: min(alcool),
       alcoolAxeMax: max(alcool),
       data: alcoolData,
+      SleepData: [],
     };
+
+    for (var i = 0; i < max(alcool); i++) {
+      var tab = [];
+      cleanData
+        .filter((d) => d.Alcohol_consumption === i)
+        .map((d) => tab.push(d.Sleep_efficiency));
+      alcoolGraphe.SleepData.push({ moyenneSleep: mean(tab), alcool: i });
+    }
+    console.log("là", alcoolGraphe);
+
+    //graphe 7
+    var sport = [];
+    cleanData.map((d) => sport.push(d.Exercise_frequency));
+
+    const sportGraphe = {
+      sportAxeMin: min(sport),
+      sportAxeMax: max(sport),
+      data: cleanData,
+    };
+
+    //graphe 8
+    let sommeReveilAlcool = 0;
+    let sommeReveilNoAlcool = 0;
+
+    const noAlcool = cleanData.filter((d) => d.Alcohol_consumption === 0);
+    alcoolData.map((d) => (sommeReveilAlcool += d.Awakenings));
+    noAlcool.map((d) => (sommeReveilNoAlcool += d.Awakenings));
+    const moyenneReveilAlcool = sommeReveilAlcool / alcoolData.length;
+    const moyenneReveilNoAlcool = sommeReveilNoAlcool / noAlcool.length;
+    const alcoolReveilGraphe = {
+      alcool: moyenneReveilAlcool,
+      noAlcool: moyenneReveilNoAlcool,
+    };
+    console.log(alcoolReveilGraphe);
 
     return [
       maleGraph,
@@ -123,6 +159,7 @@ csv("/data/Sleep_Efficiency.csv")
       caffeineGraphe,
       fumeurGraphe,
       alcoolGraphe,
+      sportGraphe,
     ];
   })
   .then(function (graphes) {
@@ -217,13 +254,69 @@ Femmes: ${graphes[0].femalePercentage}`;
         "d",
         line()
           .x(function (d) {
-            console.log(d.Alcohol_consumption);
             return x(d.Alcohol_consumption);
           })
           .y(function (d) {
             return y(d.Sleep_efficiency);
           })
       );
+
+    //graphe 6 test
+
+    const grapheSixTest = graphes[5].data.sort(function (a, b) {
+      return a.Alcohol_consumption - b.Alcohol_consumption;
+    });
+
+    //arry.sort(function (a, b) { return a[2] - b[2]; });
+
+    console.log("ici", grapheSixTest);
+    const figure3 = select("#graphe-6-test")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var allGroup = ["valueA", "valueB"];
+
+    const dataReady = allGroup.map(function (grpName) {
+      // .map allows to do something for each element of the list
+      return {
+        name: grpName,
+        values: graphes[5].SleepData.map(function (d) {
+          return { alcool: d.alcool, sleep: +d.moyenneSleep };
+        }),
+      };
+    });
+    console.log(graphes[5].data);
+    console.log(dataReady);
+
+    const yScale3 = scaleLinear().range([height, 0]).domain([0, 100]);
+    figure3.append("g").call(axisLeft(yScale3));
+
+    const xScale3 = scaleLinear()
+      .range([0, width])
+      .domain([0, graphes[5].alcoolAxeMax]);
+
+    figure3
+      .append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(axisBottom(xScale3));
+
+    const myColor = scaleOrdinal().domain(allGroup).range(schemeSet2);
+
+    const line2 = line()
+      .x((d) => xScale3(+d.alcool))
+      .y((d) => yScale3(+d.sleep * 100));
+
+    figure3
+      .selectAll("myLines")
+      .data(dataReady)
+      .join("path")
+      .attr("d", (d) => line2(d.values))
+      .attr("stroke", (d) => myColor(d.name))
+      .style("stroke-width", 4)
+      .style("fill", "none");
   });
 
 /*
