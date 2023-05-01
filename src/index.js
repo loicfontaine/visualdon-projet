@@ -7,15 +7,11 @@ import { line, symbol, symbolStar } from "d3-shape";
 import { schemeSet2 } from "d3-scale-chromatic";
 import { transition } from "d3-transition";
 import { drawPlanetPhase } from "./Moon.js";
+import scrollama from "scrollama";
 
 const grapheUn = document.querySelector("#graphe-1");
 const grapheDeux = document.querySelector("#graphe-2");
-const grapheTrois = document.querySelector("#graphe-3");
 const grapheQuatre = document.querySelector("#graphe-4");
-const grapheCinq = document.querySelector("#graphe-5");
-
-select("body").append("div").attr("id", "monfigure");
-select("#monfigure").append("svg").attr("width", "500").attr("height", "500");
 
 const dessin = select("svg");
 
@@ -268,27 +264,43 @@ csv("/data/Sleep_Efficiency.csv")
   })
   .then(function (graphes) {
     //margin
-    const margin = { top: 10, right: 40, bottom: 20, left: 40 },
-      width = 0.8 * window.innerWidth - margin.left - margin.right,
-      height = 0.7 * window.innerHeight + margin.top + margin.bottom;
+    const margin = { top: 10, right: 40, bottom: 40, left: 50 },
+      width = 1200 - margin.left - margin.right,
+      height = 600 + margin.top + margin.bottom;
 
     //graphe 1
     drawPlanetPhase(grapheUn, graphes[0].malePercentage, true);
-    grapheUn.querySelector("div").classList.add("moon");
-    document.querySelector(".moon").style.left = "200px";
+    document.querySelector("#men-text").innerText = `il y'a ${Math.round(
+      graphes[0].malePercentage * 100
+    )}% d'hommes et de femmes`;
+
+    grapheUn.addEventListener("mouseover", function (e) {
+      document.querySelector("#men-text").style.opacity = 1;
+    });
+    grapheUn.addEventListener("mouseout", function (e) {
+      document.querySelector("#men-text").style.opacity = 0;
+    });
 
     //graphe 2
-    grapheDeux.innerText = `Nuit moyenne: ${graphes[1].hours}h${graphes[1].minutes}`;
+    document.querySelector(
+      "#graphe-2 #myText h2"
+    ).innerText = `${graphes[1].hours}h${graphes[1].minutes}`;
 
-    //graphe 3 définir comment gérer les pourcentages vu que tous les ages ne peuvent être affiché
+    //graphe 3
     const figure = select("#graphe-3")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", "100%")
+      .attr("height", "auto")
+      .attr(
+        "viewBox",
+        "0 0 " +
+          (width + margin.left + margin.right) +
+          " " +
+          (height + margin.top + margin.bottom)
+      )
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    const yScale = scaleLinear().range([height, 0]).domain([0, 190]);
+    const yScale = scaleLinear().range([height, 0]).domain([0, 130]);
 
     const yAxis = axisLeft(yScale);
     figure.append("g").call(yAxis);
@@ -322,7 +334,7 @@ csv("/data/Sleep_Efficiency.csv")
       .attr("class", "gBin")
       .attr(
         "transform",
-        (d) => `translate(${xScale(d.age) + margin.left + 24}, ${height})`
+        (d) => `translate(${xScale(d.age) + margin.left + 8}, ${height})`
       )
       .on("mouseover", function (event, d) {
         return Tooltip2.style("opacity", 1);
@@ -349,25 +361,38 @@ csv("/data/Sleep_Efficiency.csv")
         "d",
         "m47.776 21.864-9.86 8.748 2.954 13.024c.156.68.112 1.393-.128 2.048a3.551 3.551 0 0 1-1.22 1.636 3.454 3.454 0 0 1-3.863.17L24.486 40.6l-11.149 6.89a3.454 3.454 0 0 1-3.863-.17 3.55 3.55 0 0 1-1.22-1.636 3.612 3.612 0 0 1-.128-2.048l2.949-13.01-9.862-8.762A3.564 3.564 0 0 1 .13 20.13a3.613 3.613 0 0 1 .042-2.056 3.557 3.557 0 0 1 1.154-1.688 3.466 3.466 0 0 1 1.88-.757l12.998-1.145L21.277 2.18A3.533 3.533 0 0 1 22.56.595a3.446 3.446 0 0 1 3.867 0c.572.388 1.02.94 1.284 1.585l5.09 12.303 12.993 1.145c.687.059 1.34.322 1.88.757.54.435.941 1.022 1.154 1.688.213.666.227 1.382.042 2.056a3.564 3.564 0 0 1-1.084 1.735h-.011Z"
       )
-      .attr("fill", "black")
+      .attr("fill", "#E8EA7D")
       .attr("transform", function (d) {
         return "translate(0," + -48 * (d.idx + 1) + ")";
       });
 
+    //name to axis
+
     console.log("graphe3", graphes[2]);
 
     //graphe 4
-    grapheQuatre.innerText = `+${graphes[3]}% d'efficacité de sommeil lorsque de la cafféine est consommée`;
+    document.querySelector("#graphe-4 #myText h2").innerText = `+${
+      Math.round(graphes[3] * 100) / 100
+    }%`;
 
     //graphe 5
-    grapheCinq.innerText = `${graphes[4]}% d'efficacité de sommeil pour les fumeurs`;
+    document.querySelector("#graphe-5 #myText h2").innerText = `${
+      Math.round(graphes[4] * 100) / 100
+    }%`;
 
     //graphe 6
 
     const figure3 = select("#graphe-6")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", "100%")
+      .attr("height", "auto")
+      .attr(
+        "viewBox",
+        "0 0 " +
+          (width + margin.left + margin.right) +
+          " " +
+          (height + margin.top + margin.bottom)
+      )
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -466,7 +491,7 @@ csv("/data/Sleep_Efficiency.csv")
       .data(graphes[5].data)
       .join("g")
       .append("text")
-      .attr("x", (d, i) => 60 + i * 180)
+      .attr("x", (d, i) => 60 + i * 260)
       .attr("y", 30)
       .text((d) => d.name)
       .style("fill", (d) => myColor(d.name))
@@ -477,15 +502,24 @@ csv("/data/Sleep_Efficiency.csv")
         // Change the opacity: from 0 to 1 or from 1 to 0
         selectAll("." + d.class)
           .transition()
-          .style("opacity", currentOpacity == 1 ? 0 : 1);
+          .style("opacity", currentOpacity == 1 ? 0.3 : 1);
       });
+
+    //axis labels
 
     //graphe 7
 
     const figure4 = select("#graphe-7")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", "100%")
+      .attr("height", "auto")
+      .attr(
+        "viewBox",
+        "0 0 " +
+          (width + margin.left + margin.right) +
+          " " +
+          (height + margin.top + margin.bottom)
+      )
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -554,8 +588,15 @@ csv("/data/Sleep_Efficiency.csv")
 
     const figure5 = select("#graphe-8")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", "100%")
+      .attr("height", "auto")
+      .attr(
+        "viewBox",
+        "0 0 " +
+          (width + margin.left + margin.right) +
+          " " +
+          (height + margin.top + margin.bottom)
+      )
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -575,14 +616,6 @@ csv("/data/Sleep_Efficiency.csv")
       .x((d) => xScale5(+d.caffeine))
       .y((d) => yScale5(+d.value));
 
-    figure5
-      .append("path")
-      .datum(graphes[7].data)
-      .attr("fill", "none")
-      .attr("stroke", "#69b3a2")
-      .attr("stroke-width", 4)
-      .attr("d", (d) => line4(d.values));
-
     var Tooltip3 = select("#graphe-8")
       .append("div")
       .style("opacity", 0)
@@ -594,9 +627,28 @@ csv("/data/Sleep_Efficiency.csv")
       .style("padding", "5px")
       .style("position", "absolute");
 
+    const path = figure5
+      .append("path")
+      .datum(graphes[7].data)
+      .attr("fill", "none")
+      .attr("stroke", "#69b3a2")
+      .attr("stroke-width", 4)
+      .attr("d", (d) => line4(d.values));
+
+    const length = path.node().getTotalLength();
+    console.log("length", length);
+
+    path
+      .attr("stroke-dasharray", length + " " + length)
+      .attr("stroke-dashoffset", length);
+
+    console.log(graphes[7].data.values[0].caffeine);
+
     //points
     figure5
       .append("g")
+      .attr("class", "points")
+      .attr("opacity", "0")
       .selectAll("dot")
       .data(graphes[7].data.values)
       .join("circle")
@@ -616,6 +668,31 @@ csv("/data/Sleep_Efficiency.csv")
         return Tooltip3.style("opacity", 0);
       });
 
+    // instantiate the scrollama
+    const scroller = scrollama();
+
+    // setup the instance, pass callback functions
+    scroller
+      .setup({
+        step: ".graphe-line",
+      })
+      .onStepEnter((response) => {
+        // { element, index, direction }
+        console.log();
+        document.querySelector("#graphe-8").style.opacity = 1;
+        path.transition().attr("stroke-dashoffset", 0).duration(2000);
+        figure5.select(".points").transition().delay(2000).attr("opacity", "1");
+      })
+      .onStepExit((response) => {
+        document.querySelector("#graphe-8").style.opacity = 0.2;
+        path
+          .attr("stroke-dasharray", length + " " + length)
+          .attr("stroke-dashoffset", length);
+        figure5.select(".points").transition().attr("opacity", "0");
+        // { element, index, direction }
+        // response.element.style.opacity = 0;
+      });
+
     //FIN METTRE AVANT
   });
 
@@ -631,4 +708,15 @@ figure
   .attr("y", (s) => yScale(s.value))
   .attr("height", (s) => height - yScale(s.value))
   .attr("width", xScale.bandwidth());
+
+
+//test
+
+function resize() {
+  var width = parseInt(select("#graphe-3").style("width"));
+  select("#graphe-3").attr("width", width);
+  select("#graphe-3").attr("height", (width * height) / width);
+
+  select(window).on("resize", resize);
+}
 */

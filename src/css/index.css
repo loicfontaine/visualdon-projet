@@ -1,0 +1,191 @@
+
+@import 'typography.css';
+
+body{
+
+  background: linear-gradient(180deg, #120752 0%, #120752 14.09%, #0B0431 28.53%, #0B0431 44.79%, #10064F 68.09%, #092878 80.38%, #166181 100%);
+  overflow-x: hidden;
+padding:5%;
+}
+
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.flex-column-item {
+
+}
+.flex-column-item-left {
+  height: 50%;
+  justify-content: right;
+
+}
+
+
+.flex-item {
+flex:50%
+
+}
+
+#men-text {
+  opacity: 0;
+}
+
+@media (max-width: 850px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+
+#container {
+
+display: flex;
+justify-content: space-between;
+flex-direction: row;
+}
+
+#footer {
+  margin: 0;
+  width: 100%;
+  height: 60vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+#graphe-5 {
+  position: relative;
+}
+
+#graphe-4 {
+  position: relative;
+}
+
+#graphe-2 {
+  position:relative;
+}
+
+#graphe-8 {
+  opacity: 0.2;
+}
+
+#myText {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  margin:0
+}
+
+#sun {
+  top:100%;
+}
+
+@media (max-width: 800px) {
+  #container {
+    flex-direction: column;
+  }
+
+  .flex-item {
+    flex: 100%;
+  }
+}
+
+
+
+
+
+.moon {
+  transform: rotate(33deg);
+}
+
+#header {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#second-title {
+  text-align: center;
+  margin-bottom: 10%;
+}
+#main-title {
+margin:0;
+text-align: center;
+}
+
+#clouds {
+  position: absolute;
+  left: 0vw;
+  visibility: hidden;
+  
+  
+}
+.svgCloud {
+
+  fill: #535BA5;
+  fill-opacity: .66;
+  
+}
+#firstCloud {
+  height: 8vh;
+  animation: move 23s linear infinite ;
+}
+
+#secondCloud {
+  height: 12vh;
+  animation: move 18 linear 2s infinite;
+}
+#thirdCloud {
+  height: 22vh;
+  animation: move 20s linear 4s infinite;
+}
+
+#fourthCloud {
+  height: 50vh;
+  animation: move 17s linear 1s infinite;
+}
+#fifthCloud {
+  height: 55vh;
+  animation: move 24s linear 2s infinite;
+}
+
+
+#path-firstCloud {
+  transform: scale(0.3,0.3);
+}
+
+
+  @-webkit-keyframes move {
+    from {
+      transform: translateX(-60vw);
+      visibility: visible;
+    }
+    to {
+      transform: translateX(100vw);
+    }
+  }
+  
+  @-webkit-keyframes moveFirst {
+    from {
+      transform: translateX(50vw);
+    }
+    to {
+      transform: translateX(100vw);
+    }
+  }
+  

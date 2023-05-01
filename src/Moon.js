@@ -22,15 +22,16 @@ var drawPlanetPhase = (function () {
     var p;
     for (p in props) {
       el.style[p] = props[p];
+      el.classList.add("moon");
     }
   }
   function drawDiscs(outer, inner, blurSize) {
     var blurredDiameter, blurredOffset;
     setCss(outer.box, {
-      position: "absolute",
+      position: "relative",
       height: outer.diameter + "px",
       width: outer.diameter + "px",
-      border: "1px solid black",
+      //border: "1px solid black",
       backgroundColor: outer.colour,
       borderRadius: outer.diameter / 2 + "px",
       overflow: "hidden",
@@ -98,11 +99,11 @@ var drawPlanetPhase = (function () {
   }
 
   var defaultConfig = {
-    shadowColour: "black", // CSS background-colour value for the shaded part of the disc
-    lightColour: "white", // CSS background-colour value for the illuminated part of the disc
-    diameter: 100, // diameter of the moon/planets disc in pixels
+    //shadowColour: "black", // CSS background-colour value for the shaded part of the disc
+    lightColour: "#9CABE0", // CSS background-colour value for the illuminated part of the disc
+    diameter: 180, // diameter of the moon/planets disc in pixels
     earthshine: 0.1, // between 0 and 1, the amount of light falling on the shaded part of the disc 0=none, 1=full illumination
-    blur: 3, // amount of blur on the terminator in pixels, 0=no blur
+    blur: 4, // amount of blur on the terminator in pixels, 0=no blur
   };
 
   function populateMissingConfigValues(config) {
