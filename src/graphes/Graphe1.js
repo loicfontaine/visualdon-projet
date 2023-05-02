@@ -1,4 +1,4 @@
-var drawPlanetPhase = (function () {
+var draw = (function () {
   "use strict";
   /*jslint browser: true, forin: true, white: true */
 
@@ -120,4 +120,5 @@ var drawPlanetPhase = (function () {
     setPhase(el, phase, isWaxing, config);
   };
 })();
-export { drawPlanetPhase };
+
+export { draw };
