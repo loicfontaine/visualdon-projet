@@ -1,5 +1,11 @@
 import * as d3 from "/import.js";
 
+var figure;
+
+function randombetween(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
 //A enlever après
 const margin = { top: 10, right: 40, bottom: 40, left: 50 },
   width = 1200 - margin.left - margin.right,
@@ -49,7 +55,7 @@ function getData(rawData) {
 //DRAW
 
 function draw(data) {
-  const figure = d3
+  figure = d3
     .select("#graphe-3")
     .append("svg")
     .attr("width", "100%")
@@ -61,6 +67,7 @@ function draw(data) {
         " " +
         (height + margin.top + margin.bottom)
     )
+    .attr("overflow", "visible")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   const yScale = d3.scaleLinear().range([height, 0]).domain([0, 130]);
@@ -118,7 +125,6 @@ function draw(data) {
         return { idx: i };
       })
     )
-
     .enter()
     .append("path")
     .attr("class", "enter")
@@ -128,14 +134,45 @@ function draw(data) {
     )
     .attr("fill", "#E8EA7D")
     .attr("transform", function (d) {
-      return "translate(0," + -48 * (d.idx + 1) + ")";
+      return `translate(${randombetween(
+        -1000,
+        3000
+      )}, ${randombetween(-1000, 3000)})`;
     });
-
   //name to axis
+
+  figure
+    .append("text")
+    .attr("x", width - 500)
+    .attr("y", height + 80)
+    .style("fill", "white")
+    .style("text-anchor", "middle")
+    .text("Age de l'échantillon");
+
+  figure
+    .append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "middle")
+    .attr("y", -100)
+    .attr("x", -340)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .style("fill", "white")
+    .text("Nombre de personnes");
 }
 
 function scrollOn() {
   document.querySelector("#graphe-3").style.opacity = 1;
+
+  figure
+    .selectAll(".gBin")
+    .selectAll("path")
+    .transition()
+    //.ease(d3.easeCircleInOut)
+    .duration(2000)
+    .attr("transform", function (d) {
+      return "translate(0," + -48 * (d.idx + 1) + ")";
+    });
 }
 
 function scrollOut() {

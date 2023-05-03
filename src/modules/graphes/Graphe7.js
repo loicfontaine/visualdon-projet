@@ -43,6 +43,7 @@ function draw(data) {
   figure = d3
     .select("#graphe-7")
     .append("svg")
+    .attr("overflow", "visible")
     .attr("width", "100%")
     .attr("height", "auto")
     .attr(
@@ -123,6 +124,27 @@ function draw(data) {
     .on("mouseleave", function (event, d) {
       return Tooltip2.style("opacity", 0);
     });
+
+  //name to axis
+
+  figure
+    .append("text")
+    .attr("x", width - 500)
+    .attr("y", height + 80)
+    .style("fill", "white")
+    .style("text-anchor", "middle")
+    .text("Séances de sport par semaine");
+
+  figure
+    .append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "middle")
+    .attr("y", -100)
+    .attr("x", -220)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .style("fill", "white")
+    .text("Moyenne de réveil");
 }
 
 function scrollOn() {

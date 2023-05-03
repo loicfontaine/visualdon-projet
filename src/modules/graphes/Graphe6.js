@@ -29,12 +29,13 @@ function getData(rawData) {
       },
     ],
   };
-
-  for (var i = 0; i < d3.max(alcool); i++) {
+  alcool = [...new Set(alcool)].sort((x, y) => x - y);
+  console.log("graphe6", alcool);
+  alcool.forEach((alcoholConsumption) => {
     var tabEfficiency = [];
     var tabDeep = [];
     rawData
-      .filter((d) => d.Alcohol_consumption === i)
+      .filter((d) => d.Alcohol_consumption === alcoholConsumption)
       .map(function (d) {
         tabEfficiency.push(d.Sleep_efficiency);
         tabDeep.push(d.Deep_sleep_percentage);
@@ -42,13 +43,13 @@ function getData(rawData) {
 
     data.data[0].values.push({
       value: d3.mean(tabEfficiency) * 100,
-      alcool: i,
+      alcool: alcoholConsumption,
     });
     data.data[1].values.push({
       value: d3.mean(tabDeep) * 100,
-      alcool: i,
+      alcool: alcoholConsumption,
     });
-  }
+  });
 
   return data;
 }
@@ -59,6 +60,7 @@ function draw(data) {
   figure = d3
     .select("#graphe-6")
     .append("svg")
+    .attr("overflow", "visible")
     .attr("width", "100%")
     .attr("height", "auto")
     .attr(
@@ -148,6 +150,7 @@ function draw(data) {
     });
 
   // Add a legend at the end of each line
+  /*
   figure
     .selectAll("myLabels")
     .data(data.data)
@@ -166,7 +169,7 @@ function draw(data) {
     .text((d) => d.name)
     .style("fill", (d) => myColor(d.name))
     .style("font-size", 15);
-
+*/
   //légende intéractive
 
   figure
@@ -176,7 +179,7 @@ function draw(data) {
     .attr("class", "legend")
     .attr("opacity", 0)
     .append("text")
-    .attr("x", (d, i) => 60 + i * 260)
+    .attr("x", (d, alcoholConsumption) => 60 + alcoholConsumption * 260)
     .attr("y", 30)
     .text((d) => d.name)
     .style("fill", (d) => myColor(d.name))
@@ -189,6 +192,27 @@ function draw(data) {
         .transition()
         .style("opacity", currentOpacity == 1 ? 0.2 : 1);
     });
+
+  //name to axis
+
+  figure
+    .append("text")
+    .attr("x", width - 500)
+    .attr("y", height + 80)
+    .style("fill", "white")
+    .style("text-anchor", "middle")
+    .text("Alcool consommé dans la journée (ml)");
+
+  figure
+    .append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "middle")
+    .attr("y", -100)
+    .attr("x", -340)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .style("fill", "white")
+    .text("Pourcentage");
 }
 
 function scrollOn() {

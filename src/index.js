@@ -1,23 +1,18 @@
 import { csv } from "d3-fetch";
 import { select, selectAll } from "d3-selection";
-import { mean, min, max, range, extent, ascending, histogram } from "d3-array";
-import { axisBottom, axisLeft } from "d3-axis";
-import { scaleLinear, scaleOrdinal, scaleBand } from "d3-scale";
-import { line, symbol, symbolStar } from "d3-shape";
-import { schemeSet2 } from "d3-scale-chromatic";
-import { transition } from "d3-transition";
 
 import scrollama from "scrollama";
 //import my graph
 
-import * as graphe1 from "./graphes/Graphe1.js";
-import * as graphe2 from "./graphes/Graphe2";
-import * as graphe3 from "./graphes/Graphe3";
-import * as graphe4 from "./graphes/Graphe4";
-import * as graphe5 from "./graphes/Graphe5";
-import * as graphe6 from "./graphes/Graphe6";
-import * as graphe7 from "./graphes/Graphe7";
-import * as graphe8 from "./graphes/Graphe8";
+import * as graphe1 from "./modules/graphes/Graphe1.js";
+import * as graphe2 from "./modules/graphes/Graphe2";
+import * as graphe3 from "./modules/graphes/Graphe3";
+import * as graphe4 from "./modules/graphes/Graphe4";
+import * as graphe5 from "./modules/graphes/Graphe5";
+import * as graphe6 from "./modules/graphes/Graphe6";
+import * as graphe7 from "./modules/graphes/Graphe7";
+import * as graphe8 from "./modules/graphes/Graphe8";
+import * as clouds from "./modules/Clouds";
 
 const grapheUn = document.querySelector("#graphe-1");
 
@@ -31,7 +26,7 @@ csv("/data/Sleep_Efficiency.csv")
         (d.id = +d.id),
         (d.Awakenings = +d.Awakenings),
         (d.Sleep_efficiency = +d.Sleep_efficiency),
-        (d.Alcohol_consumption = +d.Alcohol_consumption),
+        (d.Alcohol_consumption = +d.Alcohol_consumption * 29.5735),
         (d.Caffeine_consumption = +d.Caffeine_consumption),
         (d.Deep_sleep_percentage = +d.Deep_sleep_percentage / 100),
         (d.Exercise_frequency = +d.Exercise_frequency),
@@ -183,38 +178,15 @@ function getGraphObject(id) {
 }
 
 //animation try
+//clouds.move();
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
 
-function randombetween(min, max) {
-  return Math.round((Math.random() * (max - min) + min) * 10) / 10;
-}
-
-console.log(`${randombetween(-60, 100)}vh`);
-document.querySelectorAll(".cloud").forEach((cloud) =>
-  cloud.animate(
-    [
-      {
-        transform: `translateX(-60vh)`,
-        visibility: "visible",
-      },
-      {
-        transform: "translateX(100vw)",
-      },
-    ],
-    {
-      duration: randombetween(10000, 30000),
-      iterations: Infinity,
-      easing: "linear",
-      delay: randombetween(0, 4000),
-    }
-  )
-);
-
-document.querySelectorAll(".cloud").forEach(function (cloud) {
-  var scale = randombetween(0.3, 1);
-  cloud.style.top = `${randombetween(0, 40)}vh`;
-  cloud.querySelector("svg").style.transform = `scale(${scale}, ${scale})`;
+window.addEventListener("load", (e) => {
+  clouds.moveFirst();
+  //clouds.move();
 });
-
 /*
   @-webkit-keyframes move {
     from {
