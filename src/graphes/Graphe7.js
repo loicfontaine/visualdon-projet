@@ -127,13 +127,18 @@ function draw(data) {
 
 function scrollOn() {
   document.querySelector("#graphe-7").style.opacity = 1;
-  path.transition().attr("stroke-dashoffset", 0).duration(2000);
-  figure.select(".points").transition().delay(2000).attr("opacity", "1");
+  path
+    .attr("opacity", 1)
+    .transition()
+    .attr("stroke-dashoffset", 0)
+    .duration(2000);
+  figure.select(".points").transition().delay(1500).attr("opacity", "1");
 }
 
 function scrollOut() {
   document.querySelector("#graphe-7").style.opacity = 0.2;
   path
+    .attr("opacity", 0)
     .attr("stroke-dasharray", length + " " + length)
     .attr("stroke-dashoffset", length);
   figure.select(".points").transition().attr("opacity", "0");

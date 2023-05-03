@@ -73,6 +73,8 @@ flex-direction: row;
 }
 
 #graphe-2 {
+  padding: 22%;
+margin-bottom: 10%;
   position:relative;
 }
 
@@ -101,6 +103,8 @@ flex-direction: row;
     flex: 100%;
   }
 }
+
+
 
 
 /*
@@ -144,13 +148,37 @@ margin:0;
 text-align: center;
 }
 
+
+#footer #clouds {
+
+  position: absolute;
+  left: 0vw;
+  visibility: hidden;
+  width: 100%;
+  height: 60%;
+  margin-top:auto;
+  overflow: hidden;
+}
+
 #clouds {
   position: absolute;
   left: 0vw;
   visibility: hidden;
-  
+
+}
+
+.cloud {
+  position: absolute;
+}
+
+.svgCloudBot {
+
+  fill: rgba(255, 255, 255, 0.66);
+  fill-opacity: .66;
   
 }
+
+
 .svgCloud {
 
   fill: #535BA5;
@@ -164,7 +192,7 @@ text-align: center;
 
 #secondCloud {
   height: 12vh;
-  animation: move 18 linear 2s infinite;
+  animation: move 18s linear 2s infinite;
 }
 #thirdCloud {
   height: 22vh;

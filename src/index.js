@@ -182,6 +182,52 @@ function getGraphObject(id) {
   }
 }
 
+//animation try
+
+function randombetween(min, max) {
+  return Math.round((Math.random() * (max - min) + min) * 10) / 10;
+}
+
+console.log(`${randombetween(-60, 100)}vh`);
+document.querySelectorAll(".cloud").forEach((cloud) =>
+  cloud.animate(
+    [
+      {
+        transform: `translateX(-60vh)`,
+        visibility: "visible",
+      },
+      {
+        transform: "translateX(100vw)",
+      },
+    ],
+    {
+      duration: randombetween(10000, 30000),
+      iterations: Infinity,
+      easing: "linear",
+      delay: randombetween(0, 4000),
+    }
+  )
+);
+
+document.querySelectorAll(".cloud").forEach(function (cloud) {
+  var scale = randombetween(0.3, 1);
+  cloud.style.top = `${randombetween(0, 40)}vh`;
+  cloud.querySelector("svg").style.transform = `scale(${scale}, ${scale})`;
+});
+
+/*
+  @-webkit-keyframes move {
+    from {
+      transform: translateX(-60vw);
+      visibility: visible;
+    }
+    to {
+      transform: translateX(100vw);
+    }
+  }
+  
+*/
+
 /*
 
 exemple d'implémentation

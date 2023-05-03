@@ -193,7 +193,11 @@ function draw(data) {
 
 function scrollOn() {
   document.querySelector("#graphe-6").style.opacity = 1;
-  path.transition().attr("stroke-dashoffset", 0).duration(2000);
+  path
+    .attr("opacity", 1)
+    .transition()
+    .attr("stroke-dashoffset", 0)
+    .duration(2000);
   figure.selectAll(".points").transition().delay(2000).attr("opacity", "1");
   figure.selectAll(".legend").transition().attr("opacity", "1");
   figure.selectAll(".legend2").transition().delay(2100).attr("opacity", "1");
@@ -202,6 +206,7 @@ function scrollOn() {
 function scrollOut() {
   document.querySelector("#graphe-6").style.opacity = 0.2;
   path
+    .attr("opacity", 0)
     .attr("stroke-dasharray", length + " " + length)
     .attr("stroke-dashoffset", length);
   figure.selectAll(".points").transition().attr("opacity", "0");
