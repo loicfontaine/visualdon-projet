@@ -6,7 +6,7 @@ import { scaleLinear, scaleOrdinal, scaleBand } from "d3-scale";
 import { line, symbol } from "d3-shape";
 import { schemeSet2 } from "d3-scale-chromatic";
 import { transition } from "d3-transition";
-import { easeCircleInOut } from "d3-ease";
+import { easeLinear } from "d3-ease";
 
 export {
   csv,
@@ -27,5 +27,5 @@ export {
   scaleBand,
   schemeSet2,
   transition,
-  easeCircleInOut,
+  easeLinear,
 };

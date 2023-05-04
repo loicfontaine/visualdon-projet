@@ -59,7 +59,7 @@ function draw(data) {
     .select("#graphe-3")
     .append("svg")
     .attr("width", "100%")
-    .attr("height", "auto")
+    .attr("height", "100%")
     .attr(
       "viewBox",
       "0 0 " +
@@ -139,6 +139,7 @@ function draw(data) {
         3000
       )}, ${randombetween(-1000, 3000)})`;
     });
+
   //name to axis
 
   figure
@@ -168,7 +169,7 @@ function scrollOn() {
     .selectAll(".gBin")
     .selectAll("path")
     .transition()
-    //.ease(d3.easeCircleInOut)
+    .ease(d3.easeLinear)
     .duration(2000)
     .attr("transform", function (d) {
       return "translate(0," + -48 * (d.idx + 1) + ")";

@@ -78,7 +78,7 @@ margin-bottom: 10%;
   position:relative;
 }
 
-.graphe-line {
+.scroll-action {
   opacity: 0.2;
 }
 
@@ -125,7 +125,7 @@ svg
 
 
 
-.moon {
+.moon-container {
   transform: rotate(33deg);
 }
 
@@ -185,51 +185,9 @@ text-align: center;
   fill-opacity: .66;
   
 }
-#firstCloud {
-  height: 8vh;
-  animation: move 23s linear infinite ;
-}
-
-#secondCloud {
-  height: 12vh;
-  animation: move 18s linear 2s infinite;
-}
-#thirdCloud {
-  height: 22vh;
-  animation: move 20s linear 4s infinite;
-}
-
-#fourthCloud {
-  height: 50vh;
-  animation: move 17s linear 1s infinite;
-}
-#fifthCloud {
-  height: 55vh;
-  animation: move 24s linear 2s infinite;
-}
 
 
 #path-firstCloud {
   transform: scale(0.3,0.3);
 }
 
-
-  @-webkit-keyframes move {
-    from {
-      transform: translateX(-60vw);
-      visibility: visible;
-    }
-    to {
-      transform: translateX(100vw);
-    }
-  }
-  
-  @-webkit-keyframes moveFirst {
-    from {
-      transform: translateX(50vw);
-    }
-    to {
-      transform: translateX(100vw);
-    }
-  }
-  

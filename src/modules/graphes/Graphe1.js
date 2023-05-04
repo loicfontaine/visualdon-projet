@@ -1,3 +1,8 @@
+var data;
+function setData(dataR) {
+  data = dataR;
+}
+
 var draw = (function () {
   "use strict";
   /*jslint browser: true, forin: true, white: true */
@@ -22,7 +27,7 @@ var draw = (function () {
     var p;
     for (p in props) {
       el.style[p] = props[p];
-      el.classList.add("moon");
+      el.classList.add("moon-container");
     }
   }
   function drawDiscs(outer, inner, blurSize) {
@@ -99,10 +104,10 @@ var draw = (function () {
   }
 
   var defaultConfig = {
-    //shadowColour: "black", // CSS background-colour value for the shaded part of the disc
+    shadowColour: "#0b0431", // CSS background-colour value for the shaded part of the disc
     lightColour: "#9CABE0", // CSS background-colour value for the illuminated part of the disc
     diameter: 180, // diameter of the moon/planets disc in pixels
-    earthshine: 0.1, // between 0 and 1, the amount of light falling on the shaded part of the disc 0=none, 1=full illumination
+    earthshine: 0, // between 0 and 1, the amount of light falling on the shaded part of the disc 0=none, 1=full illumination
     blur: 4, // amount of blur on the terminator in pixels, 0=no blur
   };
 
@@ -121,4 +126,31 @@ var draw = (function () {
   };
 })();
 
-export { draw };
+function scrollOn() {
+  const graphe = document.querySelector("#graphe-1");
+  graphe.style.opacity = 1;
+
+  var timer = setInterval(myFunction, 80);
+  var moonCount = 0.2;
+  function myFunction() {
+    console.log("data:", data);
+    if (moonCount >= data) {
+      console.log("no");
+      clearInterval(timer);
+      return;
+    }
+    //do stuff
+    let oldMoon = document.querySelector(".moon-container");
+    if (oldMoon != null) {
+      oldMoon.remove();
+    }
+    console.log(moonCount);
+    draw(graphe, moonCount, true);
+    moonCount += 0.035;
+  }
+}
+function scrollOut() {
+  document.querySelector("#graphe-1").style.opacity = 0.2;
+}
+
+export { draw, scrollOut, scrollOn, setData };

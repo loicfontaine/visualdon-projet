@@ -22,7 +22,7 @@ function move() {
       {
         duration: randombetween(10500, 30000),
         iterations: first ? 1 : Infinity,
-        easing: "linear",
+        //easing: "linear",
         delay: first ? 0 : randombetween(0, 4000),
       }
     )
@@ -46,10 +46,10 @@ function moveFirst() {
       [
         {
           visibility: "visible",
-          transform: "translateX(-60vw)",
+          transform: "translate(-60vw, 0)",
         },
         {
-          transform: "translateX(100vw)",
+          transform: "translate(100vw, 0)",
           visibility: "hidden",
         },
       ],

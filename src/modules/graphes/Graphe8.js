@@ -48,7 +48,7 @@ function draw(data) {
     .append("svg")
     .attr("overflow", "visible")
     .attr("width", "100%")
-    .attr("height", "auto")
+    .attr("height", "100%")
     .attr(
       "viewBox",
       "0 0 " +
@@ -151,6 +151,7 @@ function scrollOn() {
   path
     .attr("opacity", 1)
     .transition()
+    .ease(d3.easeLinear)
     .attr("stroke-dashoffset", 0)
     .duration(2000);
   figure.select(".points").transition().delay(1500).attr("opacity", 1);

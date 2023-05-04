@@ -97,10 +97,16 @@ csv("/data/Sleep_Efficiency.csv")
       height = 600 + margin.top + margin.bottom;
 
     //graphe 1
-    graphe1.draw(grapheUn, graphes[0].malePercentage, true);
+    graphe1.draw(grapheUn, 0.2, true);
+    graphe1.setData(graphes[0].malePercentage);
+
     document.querySelector("#men-text").innerText = `il y'a ${Math.round(
       graphes[0].malePercentage * 100
     )}% d'hommes et de femmes`;
+
+    console.log(graphes[0].malePercentage);
+
+    //setInterval(graphe1.animation, 500);
 
     grapheUn.addEventListener("mouseover", function (e) {
       document.querySelector("#men-text").style.opacity = 1;
@@ -135,9 +141,10 @@ csv("/data/Sleep_Efficiency.csv")
     const scroller = scrollama();
 
     // setup the instance, pass callback functions
+
     scroller
       .setup({
-        step: ".graphe-line",
+        step: ".scroll-action",
       })
       .onStepEnter((response) => {
         // { element, index, direction }
