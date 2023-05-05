@@ -170,6 +170,7 @@ function draw(data) {
     .style("fill", (d) => myColor(d.name))
     .style("font-size", 15);
 */
+
   //légende intéractive
 
   figure
@@ -178,11 +179,35 @@ function draw(data) {
     .join("g")
     .attr("class", "legend")
     .attr("opacity", 0)
-    .append("text")
-    .attr("x", (d, alcoholConsumption) => 60 + alcoholConsumption * 260)
-    .attr("y", 30)
-    .text((d) => d.name)
+    //  .style("fill", (d) => myColor(d.name))
+    .append("rect")
+    .attr("class", "myRectStyle")
+    .attr("x", (d, alcoholConsumption) => 60 + alcoholConsumption * 340)
+    .attr("y", 0)
+    .attr("width", 300)
+    .attr("height", 50)
+    .attr("rx", 15)
     .style("fill", (d) => myColor(d.name))
+
+    .on("click", function (event, d) {
+      // is the element currently visible ?
+      var currentOpacity = d3.selectAll("." + d.class).style("opacity");
+      // Change the opacity: from 0 to 1 or from 1 to 0
+      d3.selectAll("." + d.class)
+        .transition()
+        .style("opacity", currentOpacity == 1 ? 0.2 : 1);
+    });
+
+  //add text
+  figure
+    .selectAll(".legend")
+    .data(data.data)
+    .append("text")
+    .attr("x", (d, idx) => 90 + idx * 360)
+    .attr("y", 33)
+    .attr("position", "absolute")
+    .text((d) => d.name)
+    .style("fill", "white")
     .style("font-size", 15)
     .on("click", function (event, d) {
       // is the element currently visible ?
@@ -196,6 +221,15 @@ function draw(data) {
   //name to axis
 
   figure
+    .selectAll(".legend")
+    .data(data.data)
+    .on("mouseenter", function (e) {
+      e.target.querySelector(".myRectStyle").style.filter = "brightness(50%)";
+    })
+    .on("mouseleave", function (e, d) {
+      e.target.querySelector(".myRectStyle").style.filter = "brightness(100%)";
+      //e.target.querySelector(".myRectStyle").style.fill = myColor(d.name);
+    })
     .append("text")
     .attr("x", width - 500)
     .attr("y", height + 80)

@@ -8,8 +8,14 @@ body{
 padding:5%;
 padding-bottom: 0;
 margin: 0;
+    position: relative;
+    height: 100%;
 }
 
+.flex {
+  display:flex;
+  align-items: center;
+}
 
 .flex-container {
   display: flex;
@@ -22,15 +28,27 @@ margin: 0;
   justify-content: center;
 }
 
-.flex-column-item {
 
+#flex-bot {
+  overflow: hidden;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 2%;
+  position:relative;
+  top:22vh;
+  width: 100%;
 }
-.flex-column-item-left {
-  height: 50%;
-  justify-content: right;
 
+
+img {
+margin-right: 3%;
+  width: 15%;
 }
 
+.legend {
+  cursor: pointer;
+}
 
 .flex-item {
 flex:50%
@@ -56,9 +74,11 @@ flex-direction: row;
 }
 
 #footer {
-  margin: 0;
+  margin-top:40vh;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  height: 60vh;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -76,6 +96,10 @@ flex-direction: row;
   padding: 22%;
 margin-bottom: 10%;
   position:relative;
+}
+
+#graphe-1 {
+  padding:10%
 }
 
 .scroll-action {
@@ -149,22 +173,22 @@ text-align: center;
 }
 
 
-#footer #clouds {
-
-  position: absolute;
-  left: 0vw;
-  visibility: hidden;
-  width: 100%;
-  height: 60%;
-  margin-top:auto;
-  overflow: hidden;
-}
 
 #clouds {
   position: absolute;
   left: 0vw;
   visibility: hidden;
+}
 
+
+#clouds-bot {
+overflow: hidden;
+  position: absolute;
+  left: 0vw;
+  visibility: hidden;
+  bottom:0;
+  width: 100%;
+  height: 70vh;
 }
 
 .cloud {
@@ -191,3 +215,19 @@ text-align: center;
   transform: scale(0.3,0.3);
 }
 
+
+.cssanimation, .cssanimation span {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.cssanimation span { display: inline-block }
+
+.fadeInBottom { animation-name: fadeInBottom }
+@keyframes fadeInBottom {
+  from {
+      opacity: 0;
+      transform: translateY(100%);
+  }
+  to { opacity: 1 }
+}

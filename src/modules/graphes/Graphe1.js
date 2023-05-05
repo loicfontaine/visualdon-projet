@@ -1,4 +1,7 @@
+import * as d3 from "/import.js";
+
 var data;
+const graphe = document.querySelector("#graphe-1");
 function setData(dataR) {
   data = dataR;
 }
@@ -40,6 +43,7 @@ var draw = (function () {
       backgroundColor: outer.colour,
       borderRadius: outer.diameter / 2 + "px",
       overflow: "hidden",
+      zIndex: "-100",
     });
 
     blurredDiameter = inner.diameter - blurSize;
@@ -127,29 +131,35 @@ var draw = (function () {
 })();
 
 function scrollOn() {
-  const graphe = document.querySelector("#graphe-1");
   graphe.style.opacity = 1;
 
-  var timer = setInterval(myFunction, 80);
+  var timer = setInterval(myFunction, 30);
   var moonCount = 0.2;
   function myFunction() {
-    console.log("data:", data);
     if (moonCount >= data) {
-      console.log("no");
+      //draw(graphe, data, true);
       clearInterval(timer);
+      graphe
+        .querySelector(".moon-container")
+        .insertAdjacentHTML(
+          "afterbegin",
+          `<span style="position: absolute; z-index: 1  ">yo</span>`
+        );
       return;
+    } else {
+      let oldMoon = document.querySelector(".moon-container");
+      if (oldMoon != null) {
+        oldMoon.remove();
+      }
+
+      draw(graphe, moonCount, true);
+      moonCount += 0.013;
     }
-    //do stuff
-    let oldMoon = document.querySelector(".moon-container");
-    if (oldMoon != null) {
-      oldMoon.remove();
-    }
-    console.log(moonCount);
-    draw(graphe, moonCount, true);
-    moonCount += 0.035;
   }
 }
 function scrollOut() {
+  document.querySelector(".moon-container").remove();
+  draw(graphe, 0.2, true);
   document.querySelector("#graphe-1").style.opacity = 0.2;
 }
 

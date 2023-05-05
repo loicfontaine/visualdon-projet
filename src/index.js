@@ -1,4 +1,5 @@
 import { csv } from "d3-fetch";
+import * as d3 from "/import";
 import { select, selectAll } from "d3-selection";
 
 import scrollama from "scrollama";
@@ -106,8 +107,6 @@ csv("/data/Sleep_Efficiency.csv")
 
     console.log(graphes[0].malePercentage);
 
-    //setInterval(graphe1.animation, 500);
-
     grapheUn.addEventListener("mouseover", function (e) {
       document.querySelector("#men-text").style.opacity = 1;
     });
@@ -163,19 +162,23 @@ function getGraphObject(id) {
   switch (id) {
     case "graphe-1":
       return graphe1;
+      break;
     case "graphe-2":
       return graphe2;
+      break;
     case "graphe-3":
       return graphe3;
+      break;
     case "graphe-4":
       return graphe4;
+      break;
     case "graphe-5":
       return graphe5;
+      break;
     case "graphe-6":
       return graphe6;
       break;
     case "graphe-7":
-      console.log("hey");
       return graphe7;
       break;
     case "graphe-8":
@@ -185,7 +188,6 @@ function getGraphObject(id) {
 }
 
 //animation try
-//clouds.move();
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
@@ -194,6 +196,14 @@ window.addEventListener("load", (e) => {
   clouds.moveFirst();
   //clouds.move();
 });
+console.log("done");
+
+window.onscroll = function (ev) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    //alert("you're at the bottom of the page");
+  }
+};
+
 /*
   @-webkit-keyframes move {
     from {
