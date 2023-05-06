@@ -101,6 +101,7 @@ csv("/data/Sleep_Efficiency.csv")
     graphe1.draw(grapheUn, 0.2, true);
     graphe1.setData(graphes[0].malePercentage);
 
+    /*
     document.querySelector("#men-text").innerText = `il y'a ${Math.round(
       graphes[0].malePercentage * 100
     )}% d'hommes et de femmes`;
@@ -113,7 +114,7 @@ csv("/data/Sleep_Efficiency.csv")
     grapheUn.addEventListener("mouseout", function (e) {
       document.querySelector("#men-text").style.opacity = 0;
     });
-
+*/
     //graphe 2
     graphe2.draw(graphes[1]);
 
@@ -196,11 +197,18 @@ window.addEventListener("load", (e) => {
   clouds.moveFirst();
   //clouds.move();
 });
-console.log("done");
 
 window.onscroll = function (ev) {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+  if (window.innerHeight + window.scrollY + 20 >= document.body.offsetHeight) {
+    document
+      .querySelector("#flex-bot")
+      .classList.add("cssanimation", "sequence", "fadeInBottom");
+  }
+  if (window.innerHeight + window.scrollY + 20 < document.body.offsetHeight) {
     //alert("you're at the bottom of the page");
+    document
+      .querySelector("#flex-bot")
+      .classList.remove("cssanimation", "sequence", "fadeInBottom");
   }
 };
 

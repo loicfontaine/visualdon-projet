@@ -132,7 +132,7 @@ function draw(data) {
     .attr("y", height + 80)
     .style("fill", "white")
     .style("text-anchor", "middle")
-    .text("Caféine consommés sur une journée (mg)");
+    .text("Caféine consommée sur une journée (mg)");
 
   figure
     .append("text")
@@ -160,6 +160,7 @@ function scrollOn() {
 function scrollOut() {
   document.querySelector("#graphe-8").style.opacity = 0.2;
   path
+    .transition()
     .attr("opacity", 0)
     .attr("stroke-dasharray", length + " " + length)
     .attr("stroke-dashoffset", length);

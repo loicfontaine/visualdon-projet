@@ -208,7 +208,6 @@ function draw(data) {
     .attr("position", "absolute")
     .text((d) => d.name)
     .style("fill", "white")
-    .style("font-size", 15)
     .on("click", function (event, d) {
       // is the element currently visible ?
       var currentOpacity = d3.selectAll("." + d.class).style("opacity");
@@ -229,7 +228,9 @@ function draw(data) {
     .on("mouseleave", function (e, d) {
       e.target.querySelector(".myRectStyle").style.filter = "brightness(100%)";
       //e.target.querySelector(".myRectStyle").style.fill = myColor(d.name);
-    })
+    });
+
+  figure
     .append("text")
     .attr("x", width - 500)
     .attr("y", height + 80)
@@ -265,6 +266,7 @@ function scrollOn() {
 function scrollOut() {
   document.querySelector("#graphe-6").style.opacity = 0.2;
   path
+    .transition()
     .attr("opacity", 0)
     .attr("stroke-dasharray", length + " " + length)
     .attr("stroke-dashoffset", length);

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <script type="module" src="/src/index.js"></script>
     <link rel="stylesheet" type="text/css" href="src/css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -112,10 +112,12 @@
       <div id="graphe-3" class="flex-item scroll-action"></div>
       <div class="flex-container-column flex-item">
         <div id="graphe-1" class="flex-column-item scroll-action">
-          <span id="men-text"></span>
+        <div id="moon-text">        <h2 style="text-align: center;">50%</h2>
+          <p>d'hommes et de femmes</p></div>
+  
         </div>
         <div id="graphe-2" class="flex-column-item-left scroll-action">
-          <div id="myText">
+          <div id="myText" style="text-align: start;">
             <h2></h2>
             <p>nuit moyenne</p>
           </div>
@@ -133,9 +135,9 @@
         <p style="margin-left: 18%;">Caféine</p>
       
         
-        <div id="myText">
+        <div id="myText" style="top:10%">
           <h2></h2>
-          <p>d'efficacité de sommeil lorsque de la caféine est consommée</p>
+          <p>d'efficacité de sommeil lorsque de <br> la caféine est consommée</p>
         </div>
       </div>
       <div class="flex-container-column flex-item">
@@ -230,32 +232,18 @@
     <div id="footer">
      
       <div id="flex-bot">
-        <div class="flex"><img src="img/github.png"/>
-          <a href="https://github.com/loicfontaine/visualdon-projet" target="_blank">En savoir plus</a>
+        <div class="flex ">
+          <a href="https://github.com/loicfontaine/visualdon-projet" target="_blank"><div class="flex"><img src="img/github.png" style='margin-right: 5%;'/>En savoir plus</div></a>
           </div>
-          <div class="flex" style="justify-content: flex-end;"><img src="img/github.png"/>
-            <a href="https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency" target="_blank">Voir la source</a>
+          <div class="flex ">
+            <a href="https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency" target="_blank" ><div class="flex"><img src="img/database.png" style='margin-right: 5%;'/>Voir la source</div></a>
             </div>
       </div>
 
      
       <div id="sun">
         <svg xmlns="http://www.w3.org/2000/svg" width="880" height="294" fill="none" viewBox="0 0 880 294" style="overflow: visible;">
-          <g filter="url(#a)">
             <circle cx="439.686" cy="439.686" r="426.419" fill="url(#b)" transform="rotate(-141.053 439.686 439.686)"/>
-          </g>
-          <defs>
-            <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="rotate(90 0 439.686) scale(426.419)" gradientUnits="userSpaceOnUse">
-              <stop offset=".176" stop-color="#D37B13"/>
-              <stop offset=".575" stop-color="#A75A13"/>
-              <stop offset=".815" stop-color="#FF8736"/>
-            </radialGradient>
-            <filter id="a" width="878.867" height="878.867" x=".252" y=".252" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-              <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-              <feGaussianBlur result="effect1_foregroundBlur_1_95" stdDeviation="6.5"/>
-            </filter>
-          </defs>
         </svg>
         
       </div>

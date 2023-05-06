@@ -131,6 +131,9 @@ var draw = (function () {
 })();
 
 function scrollOn() {
+  document
+    .querySelector("#moon-text")
+    .classList.add("cssanimation", "sequence", "fadeInBottom");
   graphe.style.opacity = 1;
 
   var timer = setInterval(myFunction, 30);
@@ -139,12 +142,7 @@ function scrollOn() {
     if (moonCount >= data) {
       //draw(graphe, data, true);
       clearInterval(timer);
-      graphe
-        .querySelector(".moon-container")
-        .insertAdjacentHTML(
-          "afterbegin",
-          `<span style="position: absolute; z-index: 1  ">yo</span>`
-        );
+
       return;
     } else {
       let oldMoon = document.querySelector(".moon-container");
@@ -161,6 +159,10 @@ function scrollOut() {
   document.querySelector(".moon-container").remove();
   draw(graphe, 0.2, true);
   document.querySelector("#graphe-1").style.opacity = 0.2;
+  document
+    .querySelector("#moon-text")
+    .classList.remove("cssanimation", "sequence", "fadeInBottom");
+  document.querySelector("#moon-text").style.opacity = 0;
 }
 
 export { draw, scrollOut, scrollOn, setData };

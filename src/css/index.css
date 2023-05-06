@@ -34,16 +34,17 @@ margin: 0;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 2%;
   position:relative;
   top:22vh;
   width: 100%;
+  opacity: 0;;
 }
 
 
 img {
-margin-right: 3%;
-  width: 15%;
+max-width: 20%;
+min-width: 10%;
+height: auto;
 }
 
 .legend {
@@ -98,8 +99,17 @@ margin-bottom: 10%;
   position:relative;
 }
 
+#moon-text {
+  margin-left: 8%;
+  opacity: 0;
+}
+
 #graphe-1 {
-  padding:10%
+  flex-direction: row-reverse;
+margin-top: 10%;
+margin-bottom: 5%;
+  display: flex;
+  align-items: center;
 }
 
 .scroll-action {
@@ -111,20 +121,52 @@ margin-bottom: 10%;
   top: 20%;
   width: 100%;
   text-align: center;
-  margin:0
 }
 
 #sun {
   margin-top:auto;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   #container {
     flex-direction: column;
   }
 
   .flex-item {
     flex: 100%;
+  }
+.cloud {
+
+  transform: scale(0.3);
+}
+#graphe-2 {
+  margin-bottom: 4%;
+  margin-top: 4%;
+}
+
+#graphe-1 {
+  flex-direction: column-reverse;
+}
+
+#data {
+  justify-content: flex-end;
+}
+
+#flex-bot {
+  flex-direction: column;
+}
+
+#flex-bot  div{
+  justify-content: center;
+  padding:3%
+}
+}
+
+@media (min-width: 1400px) {
+  body {
+    padding: 15%;
+    padding-bottom: 0%;
+    padding-top: 0%;
   }
 }
 
@@ -200,6 +242,11 @@ overflow: hidden;
   fill: rgba(255, 255, 255, 0.66);
   fill-opacity: .66;
   
+}
+#sun circle {
+
+  fill: #D37B13;
+  filter: blur(6.5px);
 }
 
 

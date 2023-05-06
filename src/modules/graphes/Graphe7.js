@@ -161,6 +161,7 @@ function scrollOn() {
 function scrollOut() {
   document.querySelector("#graphe-7").style.opacity = 0.2;
   path
+    .transition()
     .attr("opacity", 0)
     .attr("stroke-dasharray", length + " " + length)
     .attr("stroke-dashoffset", length);
