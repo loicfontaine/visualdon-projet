@@ -11,6 +11,10 @@ Grâce à ce jeu de données, je souhaite démontrer les bonnes habitudes à sui
 ## Références
 [**Données utilisées**](https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency)  
 Le jeu de données à plus de 3500 téléchargements.  
+
+#Edit
+Les données utilisées sont probablement fake cela [ce commentaire] (https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/discussion/388050). Le détendeur des données affirment que non, mais il n'y a pas d'autres traces de cette étude sur internet. Il faut donc prendre les données analysées avec des pincettes.
+
 ### Notebooks Kaggle:  
 - [Vina Sleep Project, Vina Chareunsap](https://www.kaggle.com/code/vinachareunsap/vina-sleep-project)  
 - [Sleep Efficiency, Khramov Dmitriy](https://www.kaggle.com/code/khramovdmitriy/sleep-efficiency)  
@@ -19,6 +23,7 @@ Le jeu de données à plus de 3500 téléchargements.
 - [REGRESS Sleep Efficiency (XGB), Unmoved.Finance](https://www.kaggle.com/code/unmoved/regress-sleep-efficiency-xgb)  
 - [Dimensionality Reduction, Equilibriumm](https://www.kaggle.com/code/equilibriumm/dimensionality-reduction)  
 - [Sleep efficiency prediction with SKLearn, Teo Wai Hong](https://www.kaggle.com/code/teowaihong/sleep-efficiency-prediction-with-sklearn)  
+
 
 ## Wireframe
 [**Version avec commentaires**](https://www.figma.com/file/zhxPdDLBFfeJWVkOXXulzc/Wireframe?node-id=0%3A1&t=XjGk5XskzzbUZ2e7-1)
