@@ -12,7 +12,7 @@ Grâce à ce jeu de données, je souhaite démontrer les bonnes habitudes à sui
 [**Données utilisées**](https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency)  
 Le jeu de données à plus de 3500 téléchargements.  
 
-#Edit
+### Edit
 Les données utilisées sont probablement fake cela [ce commentaire] (https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/discussion/388050). Le détendeur des données affirment que non, mais il n'y a pas d'autres traces de cette étude sur internet. Il faut donc prendre les données analysées avec des pincettes.
 
 ### Notebooks Kaggle:  
