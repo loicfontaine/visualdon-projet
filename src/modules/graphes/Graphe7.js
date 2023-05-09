@@ -78,8 +78,6 @@ function draw(data) {
     .attr("stroke", "#69b3a2")
     .attr("stroke-width", 4)
     .attr("d", (d) => line(d.values));
-  console.log("path", path);
-
   length = path.node().getTotalLength();
 
   path

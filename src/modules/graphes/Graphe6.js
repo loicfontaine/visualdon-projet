@@ -30,7 +30,6 @@ function getData(rawData) {
     ],
   };
   alcool = [...new Set(alcool)].sort((x, y) => x - y);
-  console.log("graphe6", alcool);
   alcool.forEach((alcoholConsumption) => {
     var tabEfficiency = [];
     var tabDeep = [];
