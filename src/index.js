@@ -45,8 +45,6 @@ csv("/data/Sleep_Efficiency.csv")
   })
 
   .then(function (cleanData) {
-    console.log(cleanData);
-
     //graphe 1
     const male =
       cleanData.filter((d) => d.Gender === "Male").length / cleanData.length;
@@ -76,7 +74,6 @@ csv("/data/Sleep_Efficiency.csv")
       alcool: moyenneReveilAlcool,
       noAlcool: moyenneReveilNoAlcool,
     };
-    console.log(alcoolReveilGraphe);
 
     //graphe 8 cafeine
 

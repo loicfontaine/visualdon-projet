@@ -128,18 +128,19 @@ function draw(data) {
 
   figure
     .append("text")
-    .attr("x", width - 500)
-    .attr("y", height + 80)
+    .attr("class", "label")
+    .attr("x", width - 530)
+    .attr("y", height + 100)
     .style("fill", "white")
     .style("text-anchor", "middle")
     .text("Caféine consommée sur une journée (mg)");
 
   figure
     .append("text")
-    .attr("class", "y label")
+    .attr("class", "label")
     .attr("text-anchor", "middle")
-    .attr("y", -100)
-    .attr("x", -340)
+    .attr("y", -130)
+    .attr("x", -310)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
     .style("fill", "white")

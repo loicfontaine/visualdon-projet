@@ -179,13 +179,12 @@ function draw(data) {
     .join("g")
     .attr("class", "legend")
     .attr("opacity", 0)
-    //  .style("fill", (d) => myColor(d.name))
     .append("rect")
     .attr("class", "myRectStyle")
-    .attr("x", (d, alcoholConsumption) => 60 + alcoholConsumption * 340)
+    .attr("x", (d, alcoholConsumption) => 60 + alcoholConsumption * 450)
     .attr("y", 0)
-    .attr("width", 300)
-    .attr("height", 50)
+    .attr("width", 420)
+    .attr("height", 60)
     .attr("rx", 15)
     .style("fill", (d) => myColor(d.name))
 
@@ -203,8 +202,8 @@ function draw(data) {
     .selectAll(".legend")
     .data(data.data)
     .append("text")
-    .attr("x", (d, idx) => 90 + idx * 360)
-    .attr("y", 33)
+    .attr("x", (d, idx) => 93 + idx * 485)
+    .attr("y", 42)
     .attr("position", "absolute")
     .text((d) => d.name)
     .style("fill", "white")
@@ -217,8 +216,6 @@ function draw(data) {
         .style("opacity", currentOpacity == 1 ? 0.2 : 1);
     });
 
-  //name to axis
-
   figure
     .selectAll(".legend")
     .data(data.data)
@@ -230,20 +227,23 @@ function draw(data) {
       //e.target.querySelector(".myRectStyle").style.fill = myColor(d.name);
     });
 
+  //name to axis
+
   figure
     .append("text")
-    .attr("x", width - 500)
-    .attr("y", height + 80)
+    .attr("class", "label")
+    .attr("x", width - 530)
+    .attr("y", height + 100)
     .style("fill", "white")
     .style("text-anchor", "middle")
     .text("Alcool consommé dans la journée (ml)");
 
   figure
     .append("text")
-    .attr("class", "y label")
+    .attr("class", "label")
     .attr("text-anchor", "middle")
-    .attr("y", -100)
-    .attr("x", -340)
+    .attr("y", -130)
+    .attr("x", -310)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
     .style("fill", "white")

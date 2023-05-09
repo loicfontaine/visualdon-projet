@@ -17,6 +17,7 @@ function draw(data) {
   document.querySelector(
     "#graphe-2 #myText h2"
   ).innerText = `${data.hours}h${data.minutes}`;
+  document.querySelector("#graphe-2 #myText h2").style.marginLeft = "45px";
 }
 
 function scrollOn() {

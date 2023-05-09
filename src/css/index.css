@@ -1,10 +1,13 @@
 
 @import 'typography.css';
 
+html body {
+  overflow-x: hidden;
+}
+
 body{
 
   background: linear-gradient(180deg, #120752 0%, #120752 14.09%, #0B0431 28.53%, #0B0431 44.79%, #10064F 68.09%, #092878 80.38%, #166181 100%);
-  overflow-x: hidden;
 padding:5%;
 padding-bottom: 0;
 margin: 0;
@@ -84,6 +87,7 @@ flex-direction: row;
   justify-content: center;
   align-items: center;
   display: flex;
+  
 }
 #graphe-5 {
   position: relative;
@@ -160,6 +164,14 @@ margin-bottom: 5%;
   justify-content: center;
   padding:3%
 }
+body {
+  padding:10%;
+}
+
+#graphe-7 {
+  margin-top: 20%;
+}
+
 }
 
 @media (min-width: 1400px) {
@@ -179,7 +191,8 @@ svg
 
 .cls-1{fill:rgba(61,64,134,.8);}
 .cls-2{fill:rgba(43,48,117,.8);}
-.cls-3{fill:#bdccd8;}
+.cls-3{fill:#bdccd8;
+}
 .cls-4{fill:rgba(60,63,133,.8);}
 .dls-1{fill:#e66800;}
 .dls-2{fill:#ff151c;}
@@ -224,7 +237,7 @@ text-align: center;
 
 
 #clouds-bot {
-overflow: hidden;
+  overflow: hidden;
   position: absolute;
   left: 0vw;
   visibility: hidden;
@@ -278,3 +291,4 @@ overflow: hidden;
   }
   to { opacity: 1 }
 }
+

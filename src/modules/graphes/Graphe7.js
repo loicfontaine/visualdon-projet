@@ -57,14 +57,14 @@ function draw(data) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   const y = d3.scaleLinear().range([height, 0]).domain([0, 3]);
-  figure.append("g").call(d3.axisLeft(y));
+  figure.append("g").call(d3.axisLeft(y).ticks(6));
 
   const x = d3.scaleLinear().range([0, width]).domain([0, data.sportAxeMax]);
 
   figure
     .append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).ticks(5));
 
   const line = d3
     .line()
@@ -129,22 +129,23 @@ function draw(data) {
 
   figure
     .append("text")
-    .attr("x", width - 500)
-    .attr("y", height + 80)
+    .attr("class", "label")
+    .attr("x", width - 530)
+    .attr("y", height + 100)
     .style("fill", "white")
     .style("text-anchor", "middle")
-    .text("Séances de sport par semaine");
+    .text("Séance de sport par semaine");
 
   figure
     .append("text")
-    .attr("class", "y label")
+    .attr("class", "label")
     .attr("text-anchor", "middle")
-    .attr("y", -100)
-    .attr("x", -220)
+    .attr("y", -130)
+    .attr("x", -310)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
     .style("fill", "white")
-    .text("Moyenne de réveil");
+    .text("Réveils durant une nuit");
 }
 
 function scrollOn() {

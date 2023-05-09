@@ -72,7 +72,7 @@ function draw(data) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   const yScale = d3.scaleLinear().range([height, 0]).domain([0, 130]);
 
-  const yAxis = d3.axisLeft(yScale);
+  const yAxis = d3.axisLeft(yScale).ticks(7);
   figure.append("g").call(yAxis);
   const xScale = d3
     .scaleBand()
@@ -144,18 +144,19 @@ function draw(data) {
 
   figure
     .append("text")
-    .attr("x", width - 500)
-    .attr("y", height + 80)
+    .attr("class", "label")
+    .attr("x", width - 530)
+    .attr("y", height + 100)
     .style("fill", "white")
     .style("text-anchor", "middle")
-    .text("Age de l'échantillon");
+    .text("Répartition des âges de l'échantillon");
 
   figure
     .append("text")
-    .attr("class", "y label")
+    .attr("class", "label")
     .attr("text-anchor", "middle")
-    .attr("y", -100)
-    .attr("x", -340)
+    .attr("y", -130)
+    .attr("x", -310)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
     .style("fill", "white")
