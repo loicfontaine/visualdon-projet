@@ -36,11 +36,3 @@ jobs:
           server-dir: /data/
           local-dir: ./data/
           dangerous-clean-slate: true
-      - name: Deploy favicon.ico
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          server: aw256.ftp.infomaniak.com
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
-          local-dir: ./favicon.ico
