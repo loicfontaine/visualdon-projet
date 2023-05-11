@@ -9,7 +9,6 @@
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 ./package-lock.json
-/dist
 
 # Local History for Visual Studio Code
 .history/
