@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /
-          local-dir: /dist/
+          local-dir: ./dist/
           dangerous-clean-slate: true
       - name: Deploy assets dir
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
