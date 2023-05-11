@@ -1,0 +1,46 @@
+name: Deploy to Infomaniak
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Deploy dist dir
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: aw256.ftp.infomaniak.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+          local-dir: ./dist/
+          dangerous-clean-slate: true
+      - name: Deploy assets dir
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: aw256.ftp.infomaniak.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /img/
+          local-dir: ./img/
+          dangerous-clean-slate: true
+      - name: Deploy data dir
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: aw256.ftp.infomaniak.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /data/
+          local-dir: ./data/
+          dangerous-clean-slate: true
+      - name: Deploy favicon.ico
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: aw256.ftp.infomaniak.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+          local-dir: ./favicon.ico
